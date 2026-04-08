@@ -4,9 +4,9 @@
 
 
 :root {
-  --bg: #000000e5;
+  --bg: #000000e5; /*cambia el fondo de todo el background*/ 
   --text: #e5e7eb;
-  --card: #020617;
+  --card: #292828;
   --primary: #38bdf8;
   --Muted: #94a3b8
   --Accent: #38bdf8
