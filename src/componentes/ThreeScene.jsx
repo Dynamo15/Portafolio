@@ -14,6 +14,21 @@ export default function ThreeScene() {
     const loader = new THREE.TextureLoader();
     
 
+    //activacion del efecto
+    const handleScroll = () => {
+    const navbar = document.querySelector(".navbar");
+
+    if (window.scrollY > 50) {
+      navbar.classList.add("active");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+
+
+    
+
     // ESCENA
     const scene = new THREE.Scene();
 
@@ -33,12 +48,26 @@ export default function ThreeScene() {
     let animationId;
     let lastTime = 0;
     let dissolve = 0;
+    let navbarEffect = 0;
 
     window.addEventListener("scroll", () => {
           const scrollY = window.scrollY;
           const maxScroll = window.innerHeight;
 
           dissolve = Math.min(scrollY / maxScroll, 1);
+          
+
+          //efectos del navbar
+
+          //  delay navbar
+          navbarEffect = Math.max(0, (scrollY - 200) / 300);
+
+          //  aquí activas el navbar
+          if (navbarEffect > 0.5) {
+            document.querySelector(".navbar")?.classList.add("active");
+          }
+
+
         });
     
       loader.load("/textures/earth.jpg",(texture) => {

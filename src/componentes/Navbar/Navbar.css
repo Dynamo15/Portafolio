@@ -1,18 +1,87 @@
-.navbar{
-	display: flex;
-	justify-content: ssapace-between;
-	padding: 1rem 2rem;
-}
+
+
+/*.navbar{
+	position: relative;
+  overflow: hidden;
+}*/
 
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /*background: #0b0b0b00;*/
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  background: #111c34;
+  background-color: transparent;
   color: white;
+
+  overflow: hidden;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 8px;
+  height: 2px;
+  transform: translateX(-50%);
+  opacity: 0;
+  border-radius: 50%;
+  background: #ffffff;
+
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  width: 8px;
+  height: 8px;
+
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #ffffff;
+
+  opacity: 0;
+
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+}
+
+.navbar.active::before {
+  opacity: 1;
+  animation: lineExpand 1s ease-out forwards;
+}
+
+.navbar.active::after {
+  opacity: 1;
+  animation: splitEnergy 1.2s ease-out forwards;
+}
+
+
+
+@keyframes splitEnergy {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  20% {
+    transform: translateX(-50%) scale(1.2);
+  }
+  100% {
+    transform: translateX(-50%) scale(0);
+  }
+}
+@keyframes lineExpand {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 .navbar__links {
