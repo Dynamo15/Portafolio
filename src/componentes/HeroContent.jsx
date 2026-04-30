@@ -1,26 +1,155 @@
+// ===============================
+// HEROContent.jsx
+// ===============================
+
+import { useEffect, useState } from "react";
+
 export default function HeroContent({ progress = 0 }) {
+  const words = "Software Developer";
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+
+    const interval = setInterval(() => {
+      setText(words.slice(0, i));
+      i++;
+
+      if (i > words.length) clearInterval(interval);
+    }, 90);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div
+    <section
       style={{
-        transform: `translateY(${0 + progress * 80}px)`,
+        transform: `translateY(${progress * 45}px)`,
         opacity: 1 - progress,
-        filter: `blur(${progress * 6}px)`
+        filter: `blur(${progress * 5}px)`
       }}
-      className="text-right"
+      className="
+        w-full
+        flex
+        justify-center
+        px-6
+      "
     >
+      <div
+        className="
+          max-w-4xl
+          w-full
+          text-center
+        "
+      >
+        {/* MINI TITLE */}
+        <p
+          className="
+            text-orange-400
+            text-sm md:text-lg
+            tracking-[0.45em]
+            mb-5
+          "
+        >
+          HELLO WORLD_
+        </p>
 
-      <h1 className="text-8xl font-bold text-white leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]">
-        Ricardo Sánchez Herrera
-      </h1>
-    <p className="text-8xl tracking-[0.25em] text-right opacity-90
-                  bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-500
-                  bg-clip-text text-transparent animate-pulse-slow">
-      SOFTWARE DEVELOPER
-    </p>
+        {/* NAME */}
+        <h1
+          className="
+            text-4xl
+            sm:text-5xl
+            md:text-6xl
+            xl:text-7xl
+            font-black
+            text-white
+            leading-tight
+            tracking-tight
+            whitespace-nowrap
+          "
+        >
+          Ricardo Sánchez Herrera
+        </h1>
 
-      
+        {/* TYPEWRITER */}
+        <p
+          className="
+            mt-6
+            text-3xl
+            sm:text-4xl
+            md:text-5xl
+            font-bold
+            tracking-[0.12em]
+            uppercase
+            text-transparent
+            bg-clip-text
+            bg-gradient-to-r
+            from-orange-400
+            via-yellow-300
+            to-orange-500
+            min-h-[65px]
 
-      
-    </div>
+            whitespace-nowrap
+          "
+        >
+          {text}
+          <span className="animate-pulse ml-1">|</span>
+        </p>
+
+        {/* DESC */}
+        <p
+          className="
+            mt-6
+            text-gray-400
+            text-base
+            md:text-lg
+            max-w-2xl
+            mx-auto
+            leading-relaxed
+          "
+        >
+          Building immersive web experiences, scalable systems
+          and futuristic interfaces with code.
+        </p>
+
+        {/* BUTTONS */}
+        <div
+          className="
+            mt-10
+            flex
+            gap-5
+            justify-center
+            flex-wrap
+          "
+        >
+          <a
+            href="#projects"
+            className="
+              px-7 py-3 rounded-full
+              bg-orange-500
+              hover:bg-orange-400
+              transition
+              font-semibold
+              shadow-lg
+            "
+          >
+            View Projects
+          </a>
+
+          <a
+            href="#contact"
+            className="
+              px-7 py-3 rounded-full
+              border border-white/20
+              hover:border-orange-400
+              hover:text-orange-400
+              transition
+            "
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }

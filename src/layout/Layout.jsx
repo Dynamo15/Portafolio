@@ -2,7 +2,8 @@ import Navbar from "../componentes/Navbar/Navbar";
 //import ThreeScene from "../componentes/ThreeScene";
 import SceneBlack from "../componentes/SceneBlack"
 import HeroContent from "../componentes/HeroContent";
-
+import {FaGithub, FaLinkedin} from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import { useEffect, useState } from "react";
 
 
@@ -20,14 +21,34 @@ const Layout = ({ children }) => {
 
   return (
     <div className="text-white">
-      
-          <Navbar />
+    
+    <Navbar />
 
-      {/* 🔥 CANVAS GLOBAL (fuera de todo) */}
-      <SceneBlack progress={progress} />
+    {/* 🔥 ICONOS (FUERA DEL HERO) */}
+    <div className=" neon
+      fixed left-0 top-1/2 -translate-y-2/3
+      flex ml-5 flex-col items-center gap-8
+      text-orange-400 text-4xl
+      z-[999]
+    ">
+      <a href="https://github.com/Dynamo15" target="_blank">
+        <FaGithub className="hover:scale-125 transition duration-300" />
+      </a>
 
-      {/* HERO */}
-      <section className="relative h-[200vh]">
+      <a href="https://www.linkedin.com/in/s%C3%A1nchez-herrera-ricardo-396413225/" target="_blank">
+        <FaLinkedin className="hover:scale-125 transition duration-300" />
+      </a>
+
+      <a href="mailto:ricardosah19@gmail.com">
+        <MdEmail className="hover:scale-125 transition duration-300" />
+      </a>
+    </div>
+
+    {/* CANVAS */}
+    <SceneBlack progress={progress} />
+
+    {/* HERO */}
+      <section className="relative h-[130vh]">
 
         <div className="hero-fade"></div>
 
@@ -47,6 +68,17 @@ const Layout = ({ children }) => {
       <footer className="text-center p-6 bg-black">
         Ricardo Sánchez
       </footer>
+      <section
+  id="contact"
+  className="min-h-screen flex items-center justify-center"
+>
+  <div>
+    <h2 className="text-4xl font-bold text-white">Contact Me</h2>
+    <p className="text-gray-400 mt-4">
+      Email: ricardosah19@gmail.com
+    </p>
+  </div>
+</section>
     </div>
   );
 };

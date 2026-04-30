@@ -15,7 +15,11 @@ const Navbar = () => {
 
   return (
     <nav className='navbar'>
-      <div className="Navbar__logo">Ricardo Sánchez</div>
+      <div className="Navbar__logo">
+        <span className="logo-r">R</span>
+        <span className="logo-s">S</span>
+        <span className="logo-h">H</span>
+      </div>
 
     
 
