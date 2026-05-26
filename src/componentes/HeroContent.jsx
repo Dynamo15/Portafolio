@@ -1,6 +1,3 @@
-// ===============================
-// HEROContent.jsx
-// ===============================
 
 import { useEffect, useState } from "react";
 
@@ -24,15 +21,18 @@ export default function HeroContent({ progress = 0 }) {
   return (
     <section
       style={{
-        transform: `translateY(${progress * 45}px)`,
-        opacity: 1 - progress,
-        filter: `blur(${progress * 5}px)`
+        transform: `
+          translateY(${progress * 45}px)
+          scale(${1 - progress * 0.05})
+        `,
+        opacity: 1 - progress * 0.4
       }}
       className="
         w-full
         flex
         justify-center
         px-6
+
       "
     >
       <div

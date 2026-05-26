@@ -14,8 +14,8 @@
   --text: #e5e7eb;
   --card: #292828;
   --primary: #38bdf8;
-  --Muted: #94a3b8
-  --Accent: #38bdf8
+  --Muted: #94a3b8;
+  --Accent: #38bdf8;
 
 }
 
@@ -91,21 +91,6 @@ img {
 }
 
 
-.hero-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(3, 3, 3, 0.7) 70%,
-    #000 100%
-  );
-  pointer-events: none;
-}
-
 /*funcion de pulsacion de iconos*/
 
 @keyframes neonPulse {
@@ -119,4 +104,128 @@ img {
 
 .neon {
   animation: neonPulse 3s infinite ease-in-out;
+}
+
+
+
+
+/*card*/
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* BORDE GENERAL */
+.project-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: 24px;
+  padding: 1px;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 20%,
+      rgba(255,140,0,0.5),
+      transparent 80%
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+
+
+
+/* PARTICULA */
+
+.project-card > * {
+  position: relative;
+  z-index: 2;
+}
+.project-card {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* GLOW PRINCIPAL */
+.project-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  background: radial-gradient(
+    circle,
+    rgba(249,130,39,0.25) 0%,
+    transparent 70%
+  );
+
+  top: 50%;
+  left: 0;
+
+  transform:
+    translate(-60%, -50%)
+    scale(0.6);
+
+  opacity: 0;
+
+  filter: blur(20px);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* HOVER */
+.project-card:hover::before {
+  opacity: 1;
+
+  transform:
+    translate(-20%, -50%)
+    scale(1);
+}
+
+/* CARD HOVER */
+.project-card:hover {
+  border-color: rgba(247, 127, 23, 0.894);
+
+  box-shadow:
+    0 0 25px rgba(249, 130, 39, 0.517),
+    0 0 60px rgba(41, 30, 1, 0);
+
+  transform:
+    translateY(-6px)
+    scale(1.01);
 }
