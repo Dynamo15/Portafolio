@@ -9,8 +9,8 @@ function App() {
   return (
     <Layout>
       <Hero />
-      <Projects />
       <About />
+      <Projects />
       <Skills />
       
       <Contact />

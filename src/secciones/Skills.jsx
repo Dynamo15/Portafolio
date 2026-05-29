@@ -49,7 +49,7 @@ const Skills = () => {
               text-white
             "
           >
-            Technologies & Tools
+            Tecnologias usadas en Proyectos
           </h2>
 
         </div>

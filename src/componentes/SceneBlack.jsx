@@ -272,11 +272,18 @@ function BlackHoleCore() {
 }
 
 export default function SceneBlack() {
-  const [show, setShow] = useState(true);
+  const [opacity, setOpacity] = useState(1);
 
-  useEffect(() => {
+    useEffect(() => {
     const onScroll = () => {
-      setShow(window.scrollY < 600);
+      const maxScroll = 1200;
+
+      const currentScroll = window.scrollY;
+
+      // Calcula opacidad entre 1 y 0
+      const fade = Math.max(0, 1 - currentScroll / maxScroll);
+
+      setOpacity(fade);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -284,7 +291,6 @@ export default function SceneBlack() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!show) return null;
 
   return (
     <div
@@ -292,7 +298,8 @@ export default function SceneBlack() {
         position: "fixed",
         inset: 0,
         zIndex: 0,
-        pointerEvents: "none"
+        pointerEvents: "none",
+        transition: "opacity 0.1s linear"
       }}
     >
       <Canvas
@@ -311,7 +318,12 @@ export default function SceneBlack() {
         <CameraController />
         <Stars />
 
-        <group position={[-2, 0, 0]}>
+        <group
+          position={[-2, -(1 - opacity) * 1.5, 0]}
+          scale={[opacity, opacity, opacity]}
+          visible={opacity > 0.01}
+        >
+
           <BlackHoleCore />
           <AccretionDisk />
         </group>

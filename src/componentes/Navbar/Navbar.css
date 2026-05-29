@@ -1,90 +1,174 @@
-
-
-/*.navbar{
-	position: relative;
-  overflow: hidden;
-}*/
-
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
+
   width: 100%;
-  padding: 1rem 2rem;
+
+  padding: 1.5rem 2.5rem;
+
   display: flex;
   justify-content: space-between;
-  background-color: transparent;
-  color: white;
+  align-items: center;
+
+  background: transparent;
+
   z-index: 1000;
-  overflow: hidden;
-  font-size: 1.5rem;
+
+  pointer-events: none;
 }
 
-.navbar::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 8px;
-  height: 2px;
-  transform: translateX(-50%);
-  opacity: 0;
-  border-radius: 50%;
-  background: #ffffff;
-
-  box-shadow: 0 0 20px #ffffff, 0 0 20px #ffffff;
-}
-
-.navbar::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-
-  width: 8px;
-  height: 8px;
-
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: #ffffff;
-
-  opacity: 0;
-
-  box-shadow: 0 0 20px #ffffff, 0 0 20px #ffffff;
-}
-
-.navbar.active::before {
-  opacity: 1;
-  animation: lineExpand 1s ease-out forwards;
-}
-
-.navbar.active::after {
-  opacity: 1;
-  animation: splitEnergy 1.2s ease-out forwards;
-}
-
-
-.navbar__links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  
-}
-
-.navbar__links a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-}
-
-.Navbar__logo{
+/* LOGO */
+.Navbar__logo {
   font-size: 2rem;
+  font-weight: 900;
+
+  letter-spacing: -2px;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  transition: 0.3s ease;
+}
+
+.Navbar__logo:hover {
+  transform: scale(1.05);
 }
 
 .logo-r {
-  color:rgb(255, 255, 255);
+  color: white;
 }
+
 .logo-s {
-  color:rgb(255, 158, 67);
+  color: rgb(255, 158, 67);
+
+  text-shadow:
+    0 0 10px rgba(255,158,67,0.5),
+    0 0 20px rgba(255,158,67,0.3);
 }
+
 .logo-h {
-  color:rgb(255, 255, 255);
+  color: white;
+}
+
+/* LANGUAGE BUTTON */
+.language-btn{
+  position: relative;
+
+  padding: 0.7rem 1.2rem;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(12px);
+
+  color: white;
+
+  overflow: visible;
+
+  transition: 0.3s ease;
+}
+
+.language-btn:hover {
+  color: rgb(255, 158, 67);
+
+  border-color: rgba(255,158,67,0.5);
+
+  background: rgba(255,158,67,0.08);
+
+  box-shadow:
+    0 0 20px rgba(255,158,67,0.2);
+
+  transform: translateY(-2px);
+}
+
+.language-btn{
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.orbit-ring{
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  pointer-events: none;
+
+  animation: orbitRotate 12s linear infinite;
+}
+
+.language-btn.reverse .orbit-ring{
+  animation-direction: reverse;
+}
+
+/* PARTICULA */
+.orbit-dot{
+  position: absolute;
+
+  top: 50%;
+  right: -2px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: rgb(255,158,67);
+
+  transform: translateY(-50%);
+
+  box-shadow:
+    0 0 8px rgba(255,158,67,0.9),
+    0 0 18px rgba(255,158,67,0.5);
+
+  pointer-events: none;
+}
+
+/* ESTELA */
+.orbit-dot::after{
+  content: "";
+
+  position: absolute;
+
+  width: 14px;
+  height: 2px;
+
+  top: 50%;
+  right: 2px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      to left,
+      rgba(255,158,67,0.8),
+      transparent
+    );
+
+  filter: blur(2px);
+
+  transform:
+    translateY(-50%)
+    rotate(25deg);
+
+  transform-origin: right center;
+}
+
+/* ROTACION */
+@keyframes orbitRotate{
+  from{
+    transform: rotate(0deg);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
 }
