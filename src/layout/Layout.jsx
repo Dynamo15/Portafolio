@@ -61,6 +61,8 @@ const Layout = ({ children }) => {
         <SceneBlack progress={progress} />
       </div>
 
+      {/*Earth*/}
+
       {/* CONTENT */}
       <main className="relative z-20">
         {children}

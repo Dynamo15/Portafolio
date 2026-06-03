@@ -1,32 +1,36 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
-import { Shape } from "three";
+import { useRef, useEffect, useState} from "react";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
+
+
 
 function Planet() {
   const groupRef = useRef();
   const moonOrbitRef = useRef();
-  //const continent = new Shape();
   const continentTexture = useLoader(
     TextureLoader,
     "/projects/continentes.png"
   );
+  
+  
 
   useFrame((state, delta) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.40;
+      groupRef.current.rotation.y += delta * 0.15;
     }
 
     if (moonOrbitRef.current) {
     moonOrbitRef.current.rotation.y += delta * 0.02;
     }
+
   });
-  console.log(continentTexture);
+  
 
   return (
     <>
       <group ref={groupRef}>
+        
           
 
             {/* TIERRA */}
@@ -52,11 +56,8 @@ function Planet() {
               />
             </mesh>
 
-
-              {/* NUBES */}
-          
-
-      
+            {/* NUBES */}
+            
             {/* ATMOSFERA */}
 
                 <mesh scale={1.08}>
@@ -88,8 +89,9 @@ function Planet() {
                 />
             </mesh>
       </group>
+
           
-              {/* LUNA */}
+            {/* LUNA */}
           <group ref={moonOrbitRef}>
 
           <mesh position={[2.8, 0, 0]}>
@@ -106,12 +108,43 @@ function Planet() {
     </>  
     
   );
+  
 }
 
+
+
 export default function Earth() {
+
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    
+    const onScroll = () => {
+      const value = Math.min(
+        1,
+        window.scrollY / 1200
+      );
+
+      setProgress(value);
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        onScroll
+      );
+  }, []);
+
+  const scale = 2.4 - progress * 1.5;
+  
   return (
-    <div className="w-[550px] h-[550px]">
+    
+    <div className="w-[1200px] h-[1200px]">
       <Canvas camera={{ position: [0, 0, 4] }}>
+        
+
         <ambientLight intensity={0.15} />
 
         <directionalLight
@@ -119,7 +152,12 @@ export default function Earth() {
           intensity={4}
         />
 
-        <Planet />
+        
+
+        <group scale={[scale, scale, scale]}>
+          <Planet />
+        </group>
+
       </Canvas>
     </div>
   );

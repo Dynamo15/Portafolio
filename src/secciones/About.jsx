@@ -66,7 +66,9 @@ const About = () => {
         <div className="relative flex justify-center items-center">
 
           {/* Placeholder Tierra */}
-          <Earth />
+          <div className="flex justify-center items-center">
+            <Earth />
+          </div>
 
           {/* Glow para futura Tierra */}
           <div
@@ -76,7 +78,7 @@ const About = () => {
               w-[420px]
               h-[420px]
               rounded-full
-              bg-orange-500/20
+              bg-blue-500/20
               blur-3xl
             "
           />
