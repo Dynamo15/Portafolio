@@ -75,6 +75,7 @@ const projects = [
         ],
     image: "/projects/ingenieria.jpeg",
     github: "https://github.com/Dynamo15/IngenieriaUAEM",
+    demo: "https://wonderful-jalebi-5317dd.netlify.app/"
     
   },
 

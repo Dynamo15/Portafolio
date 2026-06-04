@@ -122,7 +122,7 @@ export default function Earth() {
     const onScroll = () => {
       const value = Math.min(
         1,
-        window.scrollY / 1200
+        window.scrollY / 1700
       );
 
       setProgress(value);
@@ -138,11 +138,14 @@ export default function Earth() {
   }, []);
 
   const scale = 2.4 - progress * 1.5;
+  const x = (1 - progress) * 12;
+  const y = (1 - progress) * -4;
+  const rotationZ = (1 - progress) * -0.4;
   
   return (
     
-    <div className="w-[1200px] h-[1200px]">
-      <Canvas camera={{ position: [0, 0, 4] }}>
+    <div className="w-[1800px] h-[1800px]">
+      <Canvas camera={{ position: [0, 0, 10] }}>
         
 
         <ambientLight intensity={0.15} />
@@ -153,8 +156,11 @@ export default function Earth() {
         />
 
         
-
-        <group scale={[scale, scale, scale]}>
+        <group
+          position={[x, y, 0]}
+          scale={[scale, scale, scale]}
+          rotation={[0, 0, rotationZ]}
+        >
           <Planet />
         </group>
 
