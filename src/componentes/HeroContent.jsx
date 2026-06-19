@@ -46,12 +46,12 @@ export default function HeroContent({ progress = 0 }) {
         <p
           className="
             text-orange-400
-            text-sm md:text-lg
+            text-sm md:text-2xl
             tracking-[0.45em]
             mb-5
           "
         >
-          HELLO WORLD_
+          HOLA MUNDO_
         </p>
 
         {/* NAME */}
@@ -102,14 +102,13 @@ export default function HeroContent({ progress = 0 }) {
             mt-6
             text-gray-400
             text-base
-            md:text-lg
+            md:text-xl
             max-w-2xl
             mx-auto
             leading-relaxed
           "
         >
-          Building immersive web experiences, scalable systems
-          and futuristic interfaces with code.
+          La fuerza más fuerte que la electricidad y la energía atómica es la voluntad
         </p>
 
         {/* BUTTONS */}
@@ -133,21 +132,22 @@ export default function HeroContent({ progress = 0 }) {
               shadow-lg
             "
           >
-            View Projects
+            Ver Proyectos
           </a>
-
-          <a
-            href="#contact"
-            className="
-              px-7 py-3 rounded-full
-              border border-white/20
-              hover:border-orange-400
-              hover:text-orange-400
-              transition
-            "
-          >
-            Contact
-          </a>
+          {/*
+            <a
+              href="#contact"
+              className="
+                px-7 py-3 rounded-full
+                border border-white/20
+                hover:border-orange-400
+                hover:text-orange-400
+                transition
+              "
+            >
+              Contacto
+            </a>
+          */}
         </div>
       </div>
     </section>

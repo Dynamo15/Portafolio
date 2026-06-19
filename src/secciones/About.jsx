@@ -10,51 +10,56 @@ const About = () => {
       id="about"
       className="min-h-screen flex items-center px-6 py-20"
     >
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+      <div className="max-w-[1800px] mx-auto grid md:grid-cols-2 gap-40 items-center px-24">
 
         {/* LEFT */}
         <div>
 
-          <p className="text-orange-400 tracking-[0.35em] text-sm mb-4">
-            ABOUT ME_
+          <p
+            className="
+              text-orange-400
+              tracking-[0.35em]
+              text-2xl
+              uppercase
+              mb-4
+            "
+          >
+            Sobre Mi
           </p>
 
           <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
-            {t("about.title")}
+            {t("")}   {/* AQUI PUEDE IR UN TITULO */}
           </h2>
 
-          <p className="mt-8 text-gray-400 text-lg leading-relaxed max-w-xl">
-            Soy desarrollador de software con enfoque en desarrollo web y una fuerte
-            curiosidad por áreas como la inteligencia artificial, la ciberseguridad y el
-            desarrollo de videojuegos.
+          <p className="mt-12 text-gray-400 text-xl leading-10 max-w-2xl">
+
+              Soy ingeniero en software y disfruto entender cómo funcionan los sistemas para construir soluciones útiles. 
+              Me motiva aprender nuevas tecnologías, convertir ideas en proyectos reales y enfrentar retos que me permitan seguir creciendo profesionalmente.
             <br />
-            <br />
-            Me gusta diseñar sistemas funcionales, pero también experiencias que resulten
-            intuitivas, inmersivas y memorables. Creo que los detalles marcan la
-            diferencia, tanto en la arquitectura de una aplicación como en la forma en que
-            las personas interactúan con ella.
+            
+            
           </p>
 
-          <div className="mt-12 flex gap-12 flex-wrap">
+          <div className="mt-20 flex gap-20 flex-wrap">
 
             <div>
-              <h3 className="text-3xl font-bold text-orange-400">+10</h3>
-              <p className="text-gray-500 text-sm">
-                Projects
+              <h3 className="text-2xl font-bold text-orange-400">REMOTO</h3>
+              <p className="text-gray-500 text-xl">
+                SI
               </p>
             </div>
 
             <div>
-              <h3 className="text-3xl font-bold text-orange-400">3+</h3>
-              <p className="text-gray-500 text-sm">
-                Years Learning
+              <h3 className="text-2xl font-bold text-orange-400">ESTATUS</h3>
+              <p className="text-gray-500 text-xl">
+                DISPONIBLE PARA TRABAJAR
               </p>
             </div>
 
             <div>
-              <h3 className="text-3xl font-bold text-orange-400">100%</h3>
-              <p className="text-gray-500 text-sm">
-                Passion
+              <h3 className="text-2xl font-bold text-orange-400">LOCACIÓN</h3>
+              <p className="text-gray-500 text-xl">
+                MÉXICO
               </p>
             </div>
 

@@ -1,39 +1,96 @@
 import Navbar from "../componentes/Navbar/Navbar";
 import SceneBlack from "../componentes/SceneBlack";
-
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-
 import { useEffect, useState } from "react";
+import ScrollToTopButton from "../componentes/ScrollToTopButton";
 
 const Layout = ({ children }) => {
   const [scroll, setScroll] = useState(0);
+  const [aboutVisible, setAboutVisible] = useState(false);
+  const [contactVisible, setContactVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScroll(window.scrollY);
 
-    window.addEventListener("scroll", handleScroll);
+  const handleScroll = () => {
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    setScroll(window.scrollY);
+
+    const about = document.getElementById("about");
+    const contact = document.getElementById("contact");
+
+    if (!about) return;
+
+    const rect = about.getBoundingClientRect();
+
+    const visible =
+      rect.top < window.innerHeight * 0.4 &&
+      rect.bottom > window.innerHeight * 0.4;
+
+    setAboutVisible(visible);
+
+    if (contact) {
+
+    const contactRect = contact.getBoundingClientRect();
+
+    const contactIsVisible =
+      contactRect.top < window.innerHeight * 0.4 &&
+      contactRect.bottom > window.innerHeight * 0.4;
+
+    setContactVisible(contactIsVisible);
+
+}
+
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  handleScroll();
+
+  return () =>
+    window.removeEventListener("scroll", handleScroll);
+
+}, []);
 
   const progress = Math.min(scroll / 400, 1);
+  
 
   return (
     <div className="text-white overflow-x-hidden">
 
       {/* NAVBAR */}
       <Navbar />
+      <ScrollToTopButton />
 
-      {/* ICONOS */}
+      <div className="fixed inset-0 -z-10">
+          <SceneBlack progress={progress} />
+      </div>
+
+      {/* BOTONES */}
       <div
-        className="
+        className={`
           neon
-          fixed left-0 top-1/2 -translate-y-2/3
-          flex ml-5 flex-col items-center gap-8
-          text-orange-400 text-4xl
+          fixed
+          left-14
+          top-1/2
+          -translate-y-2/3
+          flex
+          flex-col
+          items-center
+          gap-8
+          text-orange-400
+          text-4xl
           z-[999]
-        "
+
+          transition-all
+          duration-700
+
+          ${
+            aboutVisible
+              ? "opacity-0 -translate-x-8 pointer-events-none"
+              : "opacity-100 translate-x-0"
+          }
+        `}
       >
         <a
           href="https://github.com/Dynamo15"
@@ -51,7 +108,18 @@ const Layout = ({ children }) => {
           <FaLinkedin className="hover:scale-125 transition duration-300" />
         </a>
 
-        <a href="mailto:ricardosah19@gmail.com">
+        <a
+          href="mailto:ricardosah19@gmail.com"
+          className={`
+            transition-all
+            duration-500
+            ${
+              contactVisible
+                ? "opacity-0 -translate-x-6 pointer-events-none"
+                : "opacity-100 translate-x-0"
+            }
+          `}
+        >
           <MdEmail className="hover:scale-125 transition duration-300" />
         </a>
       </div>
@@ -68,10 +136,10 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      {/* FOOTER */}
+      {/* FOOTER 
       <footer className="text-center p-6 relative z-20">
         Ricardo Sánchez
-      </footer>
+      </footer>*/}
 
     </div>
   );

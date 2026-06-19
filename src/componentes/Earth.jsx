@@ -1,61 +1,11 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useEffect, useState} from "react";
-import { useLoader, useThree } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import {Text} from "@react-three/drei";
+import TechLabel from "../componentes/TechLabel";
+import Satelite from "../componentes/Satelite";
 
-
-
-
-
-function TechLabel({ position, children }) {
-
-  const ref = useRef();
-  const { camera } = useThree();
-  
-
-  useFrame((state) => {
-
-    if (!ref.current) return;
-
-    ref.current.lookAt(
-      camera.position
-    );
-
-      {/* LUZ DE DIRECCION */}
-    ref.current.material.opacity =
-      0.8 +
-      Math.sin(
-        state.clock.elapsedTime * 3
-      ) * 0.2;
-  });
-
-  return (
-    
-    <>
-      
-      <Text
-        ref={ref}
-        position={position}
-        fontSize={0.22}
-        color="#fab516"
-        outlineWidth={0.012}
-        outlineColor="#dd7514"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {children}
-      </Text>
-      <Text
-        position={position}
-        fontSize={0.28}
-        color="#f1bf29"
-        fillOpacity={0.15}
-      ></Text>
-    </>
-    
-  );
-}
 
 function Planet() {
   const groupRef = useRef();
@@ -65,7 +15,9 @@ function Planet() {
     "/projects/continentes.png"
   );
   const satelliteRef = useRef();
-  const lightRef = useRef();
+  const [menuOpen, setMenuOpen] = useState(false);
+  
+  //const lightRef = useRef();
   
   {/*
   const ringRef = useRef();
@@ -83,42 +35,32 @@ function Planet() {
   const techRingRef = useRef();
   */}
   
-  
-  
 
   useFrame((state, delta) => {
 
-  if (groupRef.current) {
-    groupRef.current.rotation.y += delta * 0.15;
-  }
-
-  if (moonOrbitRef.current) {
-    moonOrbitRef.current.rotation.y += delta * 0.02;
-  }
-
-  if (satelliteRef.current) {
-
-      satelliteRef.current.position.y =
-        1.5 +
-        Math.sin(
-          state.clock.elapsedTime * 0.7
-        ) * 0.05;
-
-      satelliteRef.current.rotation.z =
-        Math.sin(
-          state.clock.elapsedTime * 0.4
-        ) * 0.05;
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.15;
     }
 
-    if (lightRef.current) {
-
-      lightRef.current.material.emissiveIntensity =
-        1 +
-        Math.sin(
-          state.clock.elapsedTime * 5
-        ) * 0.7;
-
+    if (moonOrbitRef.current) {
+      moonOrbitRef.current.rotation.y += delta * 0.04;
     }
+
+    if (satelliteRef.current) {
+
+        satelliteRef.current.position.y =
+          1.5 +
+          Math.sin(
+            state.clock.elapsedTime * 0.7
+          ) * 0.05;
+
+        satelliteRef.current.rotation.z =
+          Math.sin(
+            state.clock.elapsedTime * 0.4
+          ) * 0.05;
+      }
+    
+
 
   });
 
@@ -243,204 +185,14 @@ function Planet() {
           </group>
 
 
+          <Satelite
+            satelliteRef={satelliteRef}
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+          />
 
-          {/* SATELITE */}
-            <group
-              ref={satelliteRef}
-              position={[2.6, 1.5, 0]}
-            >
-
-              {/* CUERPO PRINCIPAL */}
-              <mesh>
-                <boxGeometry args={[0.35, 0.22, 0.22]} />
-                <meshStandardMaterial
-                  color="#bfc6cf"
-                  metalness={0.7}
-                  roughness={0.3}
-                />
-              </mesh>
-
-
-                {/*SEGUNDA CAJA */}
-              <mesh position={[0, 0.12, 0]}>
-                <boxGeometry args={[0.18, 0.08, 0.18]} />
-                <meshStandardMaterial
-                  color="#d1d5db"
-                  metalness={0.8}
-                />
-              </mesh>
-
-            <group>
-
-              {/*PANEL IZQUIERDO */}
-
-              <mesh position={[-0.45, 0, 0]}>
-                <boxGeometry args={[0.45, 0.12, 0.03]} />
-                <meshStandardMaterial
-                  color="#1e40af"
-                  emissive="#2563eb"
-                  emissiveIntensity={0.2}
-                />
-              </mesh>
-
-                {/* PANEL DERECHO*/}
-
-              <mesh position={[0.45, 0, 0]}>
-                <boxGeometry args={[0.45, 0.12, 0.03]} />
-                <meshStandardMaterial
-                  color="#1e40af"
-                  emissive="#2563eb"
-                  emissiveIntensity={0.2}
-                />
-              </mesh>
-
-              {/*marco metalico izq*/}
-              <mesh position={[-0.45, 0, -0.02]}>
-                <boxGeometry args={[0.5, 0.16, 0.01]} />
-                <meshStandardMaterial
-                  color="#9ca3af"
-                  metalness={0.8}
-                />
-              </mesh>
-
-              {/* MARCO DERECHO */}
-              <mesh position={[0.45, 0, -0.02]}>
-                <boxGeometry args={[0.5, 0.16, 0.01]} />
-                <meshStandardMaterial
-                  color="#9ca3af"
-                  metalness={0.8}
-                />
-              </mesh>
-
-              {/* Línea 1 */}
-                <mesh position={[-0.45, 0.03, 0.02]}>
-                  <boxGeometry args={[0.42, 0.005, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-                {/* Línea 2 */}
-                <mesh position={[-0.45, -0.03, 0.02]}>
-                  <boxGeometry args={[0.42, 0.005, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-                <mesh position={[-0.53, 0, 0.02]}>
-                  <boxGeometry args={[0.005, 0.11, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-                <mesh position={[-0.37, 0, 0.02]}>
-                  <boxGeometry args={[0.005, 0.11, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-                {/* Línea 1 */}
-                <mesh position={[0.45, 0.03, 0.02]}>
-                  <boxGeometry args={[0.42, 0.005, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-                {/* Línea 2 */}
-                <mesh position={[0.45, -0.03, 0.02]}>
-                  <boxGeometry args={[0.42, 0.005, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-                {/* Línea vertical izquierda */}
-                <mesh position={[0.37, 0, 0.02]}>
-                  <boxGeometry args={[0.005, 0.11, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-                {/* Línea vertical derecha */}
-                <mesh position={[0.53, 0, 0.02]}>
-                  <boxGeometry args={[0.005, 0.11, 0.005]} />
-                  <meshBasicMaterial color="#60a5fa" />
-                </mesh>
-
-            </group>
-                
-
-                
-
-
-                {/* ANTENA */}
-              <mesh position={[0, 0.18, 0]}>
-                <cylinderGeometry
-                  args={[0.02, 0.02, 0.15]}
-                />
-                <meshStandardMaterial color="#d1d5db" />
-              </mesh>
-
-
-              {/* PLANEL RECEPTOR */}
-              <mesh position={[0, 0.3, 0]}>
-                <sphereGeometry
-                  args={[0.08, 16, 16]}
-                />
-                <meshStandardMaterial
-                  color="#e5e7eb"
-                />
-
-                <mesh position={[0, 0.38, 0]}>
-                  <sphereGeometry
-                    args={[0.03, 16, 16]}
-                  />
-                  <meshStandardMaterial
-                    color="#60a5fa"
-                    emissive="#60a5fa"
-                    emissiveIntensity={2}
-                  />
-                </mesh>
-              </mesh>
-
-              {/* BRAZO DE COMUNICACION */}
-
-              <mesh position={[0, -0.18, 0]}>
-                <cylinderGeometry
-                  args={[0.015, 0.015, 0.18]}
-                />
-                <meshStandardMaterial
-                  color="#d1d5db"
-                />
-              </mesh>
-
-              {/* SENSOR FRONTAL */}
-
-              <mesh position={[0, 0, 0.13]}>
-                <sphereGeometry args={[0.04]} />
-                <meshStandardMaterial
-                  color="#0ea5e9"
-                  emissive="#0ea5e9"
-                  emissiveIntensity={1}
-                />
-              </mesh>
-
-
-            {/* LUZ */}
-              <mesh
-                ref={lightRef}
-                position={[0.15, 0.1, 0]}
-              >
-                <sphereGeometry args={[0.03]} />
-                <meshStandardMaterial
-                  color="#f59e0b"
-                  emissive="#f59e0b"
-                  emissiveIntensity={1}
-                />
-              </mesh>
-
-              <TechLabel
-                position={[0, -0.5, 0]}
-              >
-                CONTACTO
-              </TechLabel>
-              
-
-            </group>
-
-              
-    </>  
+          
+              </>  
     
   );
   

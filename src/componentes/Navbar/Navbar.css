@@ -1,21 +1,14 @@
-.navbar {
+.navbar{
   position: fixed;
   top: 0;
   left: 0;
-
   width: 100%;
 
-  padding: 1.5rem 2.5rem;
+  padding: 1.5rem 3.5rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  background: transparent;
-
-  z-index: 1000;
-
-  pointer-events: none;
 }
 
 /* LOGO */
@@ -54,7 +47,8 @@
 
 /* LANGUAGE BUTTON */
 .language-btn{
-  position: relative;
+  
+  transform: translateX(-118px);
 
   padding: 0.7rem 1.2rem;
 

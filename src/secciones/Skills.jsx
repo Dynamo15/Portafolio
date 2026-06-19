@@ -1,31 +1,19 @@
-const skills = [
-  "React",
-  "Tailwind",
-  "Three.js",
-  "JavaScript",
-  "PHP",
-  ".NET",
-  "MySQL",
-  "Unreal Engine 5",
-  "Blueprints",
-  "Niagara",
-  "Linux",
-  "Cybersecurity"
-];
+import { skills } from "../data/skills";
+import SkillCard from "../componentes/SkillCard";
 
 const Skills = () => {
+  
   return (
     <section
       id="skills"
       className="
-        min-h-screen
         px-6
-        py-32
+        pt-32
         relative
         z-20
       "
     >
-      <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto">
 
         {/* TITLE */}
         <div className="text-center mb-20">
@@ -34,11 +22,12 @@ const Skills = () => {
             className="
               text-orange-400
               tracking-[0.35em]
+              text-2xl
               uppercase
               mb-4
             "
           >
-            Skills
+            Habilidades
           </p>
 
           <h2
@@ -65,9 +54,20 @@ const Skills = () => {
           "
         >
 
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
+            <SkillCard
+              key={skill.id}
+              skill={skill}
+            />
+          ))}
+
+        </div>
+
+
+
+          {/*skills.map((skill) => (
             <div
-              key={index}
+              key={skill.id}
               className="
                 group
                 border border-white/10
@@ -89,14 +89,13 @@ const Skills = () => {
               "
             >
               <span className="group-hover:text-orange-300 transition">
-                {skill}
+                {skill.name.es}
               </span>
             </div>
-          ))}
+          ))*/}
 
         </div>
 
-      </div>
     </section>
   );
 };
