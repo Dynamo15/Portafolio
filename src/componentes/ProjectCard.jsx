@@ -1,212 +1,242 @@
-import { techIcons } from "../data/techIcons";
+import { useContext, useState } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import { useContext } from "react";
+import { techIcons } from "../data/techIcons";
+import "../styles/ProjectCard.css";
 
+const ProjectCard = ({ project }) => {
+    
+    const { language } = useContext(LanguageContext);
 
-const ProjectCard = ({ project, onSelect }) => {
-  const { language, t } = useContext(LanguageContext);
+    const [isFlipped, setIsFlipped] = useState(false);
 
+    return (
+        <div className="group relative w-full h-[420px] perspective-[1500px]">
 
+            {/* BOTON */}
 
-  return (
-
-    <div
-    onClick={() => onSelect(project)}
-      className="
-        project-card
-        group
-        relative
-        overflow-hidden
-        rounded-3xl
-        border border-white/10
-        bg-black/30
-        backdrop-blur-xl
-        transition-all
-        duration-500
-        hover:border-orange-400/40
-        hover:-translate-y-2
-        hover:shadow-[0_0_35px_rgba(255,140,0,0.15)]
-        cursor-pointer
-      "
-    >
-
-      {/* IMAGE */}
-    <div
-        
-        className="
-            relative
-            h-[320px]
-            overflow-hidden
-        "
-        >
-
-        <img
-          src={project.image}
-          alt={project.title.es}
-          className="
-            w-full
-            h-full
-            object-cover
-            transition-transform
-            duration-700
-            group-hover:scale-105
-          "
-        />
-
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-black
-            via-black/20
-            to-transparent
-          "
-        />
-
-        <div
-          className="
-            absolute
-            inset-0
-            flex
-            items-center
-            justify-center
-            opacity-0
-            group-hover:opacity-100
-            transition
-            duration-500
-          "
-        >
-        <span
-        className="
-            px-6
-            py-3
-            rounded-full
-            border
-            border-white/20
-            bg-black/40
-            backdrop-blur-md
-            text-white
-            uppercase
-            tracking-[0.2em]
-            text-sm
-        "
-        >
-            {t("viewDetails")}
-        </span>
-        </div>
-
-      </div>
-
-      <div className="p-8">
-
-        <h3 className="text-3xl font-bold text-white mb-5">
-          {project.title[language]}
-        </h3>
-
-        <div className="flex flex-wrap gap-3 mb-6">
-
-          {project.technologies.map((tech, i) => {
-
-            const TechIcon = techIcons[tech]?.icon;
-            const techColor = techIcons[tech]?.color;
-
-            return (
-
-                <span
-                    key={i}
-                    className="
-                    flex
-                    items-center
-                    gap-2
-                    px-4
-                    py-2
+            <button
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setIsFlipped(!isFlipped);
+                }}
+                className="
+                    absolute
+                    bottom-5
+                    right-5
+                    z-50
+                    w-12
+                    h-12
                     rounded-full
                     border
-                    border-orange-400/20
-                    bg-orange-400/5
-                    text-orange-300
-                    text-sm
+                    border-white/20
+                    bg-black/50
+                    backdrop-blur-md
+                    flex
+                    items-center
+                    justify-center
+                    text-white
+                    text-xl
+                    transition-all
+                    duration-500
+                    hover:scale-110
+                    hover:border-orange-500
+                    hover:text-orange-400
                 "
+            >
+                {isFlipped ? "×" : "+"}
+            </button>
+
+            {/* CONTENEDOR 3D */}
+
+            <div
+                className={`
+                    relative
+                    w-full
+                    h-full
+                    preserve-3d
+                    transition-transform
+                    duration-700
+                    ${isFlipped ? "rotate-y-180" : ""}
+                `}
+            >
+
+                {/* FRONT */}
+
+                <div
+                    className="
+                        absolute
+                        inset-0
+                        rounded-3xl
+                        bg-[#090909]
+                        border
+                        border-white/10
+                        flex
+                        items-center
+                        justify-center
+                        backface-hidden
+                        overflow-hidden
+                        transition-all
+                        duration-500
+                        hover:border-orange-500/40
+                        hover:shadow-[0_0_30px_rgba(255,120,0,.15)]
+                    "
+                >
+                    <img
+                        src={project.logo}
+                        alt={project.title[language]}
+                        className="
+                            w-40
+                            object-contain
+                            transition
+                            duration-500
+                            group-hover:scale-105
+                            drop-shadow
+                        "
+                    />
+                </div>
+
+                {/* BACK */}
+
+                <div
+                    className="
+                        absolute
+                        inset-0
+                        rotate-y-180
+                        backface-hidden
+                        rounded-3xl
+                        overflow-hidden
+                    "
                 >
 
-                {TechIcon && (
-                  <TechIcon
-                    className={`text-lg ${techColor}`}
-                  />
-                )}
+                    {/* Screenshot */}
 
-                {tech}
+                    <img
+                        src={project.image}
+                        alt={project.title[language]}
+                        className="
+                            absolute
+                            inset-0
+                            w-full
+                            h-full
+                            object-cover
+                        "
+                    />
 
-              </span>
+                    {/* Overlay */}
 
-            );
+                    <div
+                        className="
+                            absolute
+                            inset-0
+                            bg-black/75
+                        "
+                    />
 
-          })}
+                    {/* Content */}
+
+                    <div
+                        className="
+                            absolute
+                            inset-0
+                            z-20
+                            flex
+                            flex-col
+                            justify-center
+                            items-center
+                            px-8
+                            text-center
+                        "
+                    >
+
+                        <h3
+                            className="
+                                text-3xl
+                                font-bold
+                                text-white
+                                mb-4
+                            "
+                        >
+                            {project.title[language]}
+                        </h3>
+
+                        <p
+                            className="
+                                text-gray-300
+                                text-sm
+                                max-w-md
+                                mb-6
+                            "
+                        >
+                            {project.description[language]}
+                        </p>
+
+                        <div
+                            className="
+                                flex
+                                flex-wrap
+                                justify-center
+                                gap-4
+                                mb-8
+                            "
+                        >
+                            {project.technologies.map((tech) => {
+
+                                const TechIcon = techIcons[tech]?.icon;
+                                const color = techIcons[tech]?.color;
+
+                                return (
+                                    TechIcon && (
+                                        <TechIcon
+                                            key={tech}
+                                            className={`text-3xl ${color}`}
+                                        />
+                                    )
+                                );
+                            })}
+                        </div>
+
+                        <div className="flex gap-8">
+
+                            {project.demo && (
+                                <a
+                                    href={project.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="
+                                        text-white
+                                        hover:text-orange-400
+                                        transition
+                                    "
+                                >
+                                    Demo →
+                                </a>
+                            )}
+
+                            {project.github && (
+                                <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="
+                                        text-white
+                                        hover:text-orange-400
+                                        transition
+                                    "
+                                >
+                                    GitHub →
+                                </a>
+                            )}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
-
-        <p className="text-gray-400 leading-relaxed mb-8">
-          {project.description[language]}
-        </p>
-
-        <div className="grid grid-cols-2 gap-4">
-
-        {project.demo && (
-            <a
-                onClick={(e) => e.stopPropagation()}
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`
-                text-center
-                px-6
-                py-3
-                rounded-full
-                bg-orange-500
-                hover:bg-orange-400
-                transition
-                font-semibold
-
-                ${!project.github ? "col-span-2" : ""}
-              `}
-            >
-              Live Demo
-            </a>
-        )}
-
-          {project.github && (
-            <a
-                onClick={(e) => e.stopPropagation()}
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`
-                text-center
-                px-6
-                py-3
-                rounded-full
-                border
-                border-white/20
-                hover:border-orange-400
-                hover:text-orange-400
-                transition
-
-                ${!project.demo ? "col-span-2" : ""}
-              `}
-            >
-              GitHub
-            </a>
-          )}
-
-        </div>
-
-      </div>
-
-    </div>
-
-  );
-
+    );
 };
 
 export default ProjectCard;

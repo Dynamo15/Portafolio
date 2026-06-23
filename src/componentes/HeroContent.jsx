@@ -65,7 +65,7 @@ export default function HeroContent({ progress = 0 }) {
             text-white
             leading-tight
             tracking-tight
-            whitespace-nowrap
+            break-words
           "
         >
           Ricardo Sánchez Herrera
@@ -89,7 +89,7 @@ export default function HeroContent({ progress = 0 }) {
             to-orange-500
             min-h-[65px]
 
-            whitespace-nowrap
+            text-center
           "
         >
           {text}

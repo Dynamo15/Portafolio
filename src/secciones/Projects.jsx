@@ -6,6 +6,7 @@ import ProjectModal from "../componentes/ProjectModal";
 const Projects = () => {
 
   const [selectedProject, setSelectedProject] = useState(null);
+  const [openCard, setOpenCard] = useState(null);
 
   return (
 
@@ -71,9 +72,15 @@ const Projects = () => {
             {projects.map((project) => (
 
               <ProjectCard
-                key={project.id}
-                project={project}
-                onSelect={setSelectedProject}
+                  key={project.id}
+                  project={project}
+                  isOpen={openCard === project.id}
+                  onToggle={() =>
+                      setOpenCard(
+                          openCard === project.id ? null : project.id
+                      )
+                  }
+                  onSelect={setSelectedProject}
               />
 
             ))}

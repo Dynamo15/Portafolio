@@ -1,6 +1,7 @@
 export const projects = [
 
     {
+
         id: 1,
 
         title: {
@@ -15,7 +16,9 @@ export const projects = [
 
         technologies: [],
 
-        image: "",
+        logo: "/logos/kokovet.svg",
+
+        image: "/projects/kokovet.webp",
 
         github: "",
 
@@ -24,6 +27,7 @@ export const projects = [
         featured: true,
 
         order: 1
+
     }
 
 ];

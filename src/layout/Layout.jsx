@@ -6,51 +6,51 @@ import { useEffect, useState } from "react";
 import ScrollToTopButton from "../componentes/ScrollToTopButton";
 
 const Layout = ({ children }) => {
-  const [scroll, setScroll] = useState(0);
-  const [aboutVisible, setAboutVisible] = useState(false);
-  const [contactVisible, setContactVisible] = useState(false);
+    const [scroll, setScroll] = useState(0);
+    const [aboutVisible, setAboutVisible] = useState(false);
+    const [contactVisible, setContactVisible] = useState(false);
 
-  useEffect(() => {
+    useEffect(() => {
 
-  const handleScroll = () => {
+    const handleScroll = () => {
 
-    setScroll(window.scrollY);
+      setScroll(window.scrollY);
 
-    const about = document.getElementById("about");
-    const contact = document.getElementById("contact");
+      const about = document.getElementById("about");
+      const contact = document.getElementById("contact");
 
-    if (!about) return;
+      if (!about) return;
 
-    const rect = about.getBoundingClientRect();
+      const rect = about.getBoundingClientRect();
 
-    const visible =
-      rect.top < window.innerHeight * 0.4 &&
-      rect.bottom > window.innerHeight * 0.4;
+      const visible =
+        rect.top < window.innerHeight * 0.4 &&
+        rect.bottom > window.innerHeight * 0.4;
 
-    setAboutVisible(visible);
+        setAboutVisible(visible);
 
-    if (contact) {
+          if (contact) {
 
-    const contactRect = contact.getBoundingClientRect();
+          const contactRect = contact.getBoundingClientRect();
 
-    const contactIsVisible =
-      contactRect.top < window.innerHeight * 0.4 &&
-      contactRect.bottom > window.innerHeight * 0.4;
+          const contactIsVisible =
+            contactRect.top < window.innerHeight * 0.4 &&
+            contactRect.bottom > window.innerHeight * 0.4;
 
-    setContactVisible(contactIsVisible);
+          setContactVisible(contactIsVisible);
 
-}
+      }
 
-  };
+    };
 
-  window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  handleScroll();
+    handleScroll();
 
-  return () =>
-    window.removeEventListener("scroll", handleScroll);
+    return () =>
+      window.removeEventListener("scroll", handleScroll);
 
-}, []);
+  }, []);
 
   const progress = Math.min(scroll / 400, 1);
   
