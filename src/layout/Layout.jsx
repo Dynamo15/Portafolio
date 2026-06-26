@@ -62,24 +62,37 @@ const Layout = ({ children }) => {
       <Navbar />
       <ScrollToTopButton />
 
-      <div className="fixed inset-0 -z-10">
-          <SceneBlack progress={progress} />
-      </div>
-
       {/* BOTONES */}
       <div
         className={`
           neon
           fixed
-          left-14
-          top-1/2
-          -translate-y-2/3
+
+          left-4
+          md:left-14
+
+          bottom-6
+          md:bottom-auto
+
+          top-auto
+          md:top-1/2
+
+          md:-translate-y-2/3
+
           flex
-          flex-col
+          flex-row
+          md:flex-col
+
           items-center
-          gap-8
+
+          gap-6
+          md:gap-8
+
           text-orange-400
-          text-4xl
+
+          text-3xl
+          md:text-4xl
+
           z-[999]
 
           transition-all

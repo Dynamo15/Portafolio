@@ -224,16 +224,43 @@ export default function Earth() {
       );
   }, []);
 
-  const scale = 2.4 - progress * 1.5;
-  const x = (1 - progress) * 12;
-  const y = (1 - progress) * -4;
+  const isMobile = window.innerWidth < 768;
+
+  const scale = isMobile
+    ? 1.3 - progress * 0.6
+    : 2.4 - progress * 1.5;
+
+  const x = isMobile
+    ? 0
+    : (1 - progress) * 12;
+
+  const y = isMobile
+    ? 0
+    : (1 - progress) * -4;
+
   const rotationZ = (1 - progress) * -0.4;
-  
   
     
   return (
     
-    <div className="w-[1800px] h-[1800px]">
+    <div
+      className="
+        w-[260px]
+        h-[260px]
+
+        sm:w-[350px]
+        sm:h-[350px]
+
+        md:w-[600px]
+        md:h-[600px]
+
+        lg:w-[800px]
+        lg:h-[800px]
+
+        xl:w-[1800px]
+        xl:h-[1800px]
+      "
+    >
       <Canvas camera={{ position: [0, 0, 10] }}>
         
 

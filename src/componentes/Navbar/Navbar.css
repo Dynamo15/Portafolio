@@ -48,23 +48,15 @@
 /* LANGUAGE BUTTON */
 .language-btn{
   
-  transform: translateX(-118px);
-
   padding: 0.7rem 1.2rem;
-
   border-radius: 999px;
-
   border: 1px solid rgba(255,255,255,0.08);
-
   background: rgba(255,255,255,0.04);
-
   backdrop-filter: blur(12px);
-
   color: white;
-
   overflow: visible;
-
   transition: 0.3s ease;
+  
 }
 
 .language-btn:hover {

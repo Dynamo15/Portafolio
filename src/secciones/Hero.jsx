@@ -17,17 +17,27 @@ const Hero = () => {
   return (
     
     <section className="relative min-h-screen">
+      <div
+        className="
+          sticky
+          top-0
+          h-screen
+          flex
+          items-center
 
-      <div className="sticky top-0 h-screen flex items-center justify-end pr-32 z-50">
+          justify-center
+          lg:justify-end
 
+          px-6
+          lg:pr-32
+
+          z-50
+        "
+      >
         <div className="-translate-y-10">
           <HeroContent progress={progress} />
         </div>
-
       </div>
-
-      
-
     </section>
     
   );

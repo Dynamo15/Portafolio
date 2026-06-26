@@ -37,7 +37,7 @@ export default function HeroContent({ progress = 0 }) {
     >
       <div
         className="
-          max-w-4xl
+          max-w-3xl
           w-full
           text-center
         "
@@ -57,7 +57,7 @@ export default function HeroContent({ progress = 0 }) {
         {/* NAME */}
         <h1
           className="
-            text-4xl
+            text-3xl
             sm:text-5xl
             md:text-6xl
             xl:text-7xl
@@ -65,7 +65,7 @@ export default function HeroContent({ progress = 0 }) {
             text-white
             leading-tight
             tracking-tight
-            break-words
+            md:whitespace-nowrap
           "
         >
           Ricardo Sánchez Herrera
@@ -75,8 +75,8 @@ export default function HeroContent({ progress = 0 }) {
         <p
           className="
             mt-6
-            text-3xl
-            sm:text-4xl
+            text-xl
+            sm:text-3xl
             md:text-5xl
             font-bold
             tracking-[0.12em]
@@ -101,7 +101,8 @@ export default function HeroContent({ progress = 0 }) {
           className="
             mt-6
             text-gray-400
-            text-base
+            text-sm
+            sm:text-base
             md:text-xl
             max-w-2xl
             mx-auto

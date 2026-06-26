@@ -242,6 +242,9 @@ function AccretionDisk() {
   );
 }
 
+
+
+
 function BlackHoleCore() {
   return (
     <>
@@ -270,27 +273,44 @@ function BlackHoleCore() {
     </>
   );
 }
-
 export default function SceneBlack() {
   const [opacity, setOpacity] = useState(1);
 
-    useEffect(() => {
+  const [isMobile, setIsMobile] = useState(
+    window.innerWidth < 1024
+  );
+
+  useEffect(() => {
+    const resize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    window.addEventListener("resize", resize);
+
+    return () =>
+      window.removeEventListener("resize", resize);
+  }, []);
+
+  useEffect(() => {
     const onScroll = () => {
       const maxScroll = 1200;
-
       const currentScroll = window.scrollY;
 
-      // Calcula opacidad entre 1 y 0
-      const fade = Math.max(0, 1 - currentScroll / maxScroll);
+      const fade = Math.max(
+        0,
+        1 - currentScroll / maxScroll
+      );
 
       setOpacity(fade);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, {
+      passive: true
+    });
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () =>
+      window.removeEventListener("scroll", onScroll);
   }, []);
-
 
   return (
     <div
@@ -303,7 +323,7 @@ export default function SceneBlack() {
       }}
     >
       <Canvas
-        dpr={[1, 1.3]} // 🔥 antes usaba resolución completa
+        dpr={[1, 1.3]}
         gl={{
           antialias: false,
           powerPreference: "high-performance"
@@ -319,11 +339,18 @@ export default function SceneBlack() {
         <Stars />
 
         <group
-          position={[-2, -(1 - opacity) * 1.5, 0]}
-          scale={[opacity, opacity, opacity]}
+          position={[
+            isMobile ? 0 : -2,
+            isMobile ? -0.7 : -(1 - opacity) * 1.5,
+            0
+          ]}
+          scale={[
+            isMobile ? opacity * 0.6 : opacity,
+            isMobile ? opacity * 0.6 : opacity,
+            isMobile ? opacity * 0.6 : opacity
+          ]}
           visible={opacity > 0.01}
         >
-
           <BlackHoleCore />
           <AccretionDisk />
         </group>
