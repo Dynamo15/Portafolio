@@ -1,14 +1,55 @@
 {
-  "nav": {
-    "hero": "Inicio",
-    "about": "Sobre mí",
-    "projects": "Proyectos",
-    "skills": "Habilidades"
+  "common": {
+    "github": "GitHub",
+    "demo": "Demo",
+    "viewMore": "Ver más",
+    "close": "Cerrar",
+    "download": "Descargar",
+    "contact": "Contacto",
+    "send": "Enviar",
+    "loading": "Cargando...",
+    "available": "Disponible"
+    
+  },
+
+  "navbar": {
+    "language": "Idioma"
   },
 
   "hero": {
-    "title": "Hola, soy Ricardo",
-    "subtitle": "Desarrollador de software",
-    "cta": "Ver Proyectos"
+    "hello": "HOLA MUNDO_",
+    "role": "Software Developer",
+    "description": "La fuerza más fuerte que la electricidad y la energía atómica es la voluntad.",
+    "projectsButton": "Ver proyectos"
+  },
+
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy ingeniero en software y disfruto entender cómo funcionan los sistemas para construir soluciones útiles. Me motiva aprender nuevas tecnologías, convertir ideas en proyectos reales y enfrentar retos que me permitan seguir creciendo profesionalmente.",
+    "remote": "REMOTO",
+    "status": "ESTATUS",
+    "location": "LOCACIÓN",
+    "available": "DISPONIBLE PARA TRABAJAR",
+    "yes": "SÍ",
+    "country": "MÉXICO"
+  },
+
+  "projects": {
+    "subtitle": "Proyectos",
+    "title": "Proyectos Destacados",
+    "demo": "Demo",
+    "github": "GitHub",
+    "liveDemo": "Ver Demo"
+  },
+
+  "skills": {
+    "subtitle": "Habilidades",
+    "title": "Tecnologías usadas en proyectos"
+  },
+
+  "contact": {
+    "subtitle": "Contacto",
+    "title": "Trabajo remoto",
+    "mail": "CORREO"
   }
 }

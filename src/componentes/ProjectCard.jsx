@@ -1,16 +1,18 @@
 import { useContext, useState } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import { techIcons } from "../data/techIcons";
+import { techIcons } from "../data/api/techIcons";
 import "../styles/ProjectCard.css";
 
 const ProjectCard = ({ project }) => {
     
     const { language } = useContext(LanguageContext);
-
+    const { t } = useContext(LanguageContext);
     const [isFlipped, setIsFlipped] = useState(false);
 
     return (
-        <div className="group relative w-full h-[420px] perspective-[1500px]">
+        <div className="group relative w-full h-[360px]
+            sm:h-[400px]
+            lg:h-[420px] perspective-[1500px]">
 
             {/* BOTON */}
 
@@ -24,8 +26,13 @@ const ProjectCard = ({ project }) => {
                     bottom-5
                     right-5
                     z-50
-                    w-12
-                    h-12
+                    w-10
+                    h-10
+                    sm:w-12
+                    sm:h-12
+
+                    text-lg
+                    sm:text-xl
                     rounded-full
                     border
                     border-white/20
@@ -35,7 +42,6 @@ const ProjectCard = ({ project }) => {
                     items-center
                     justify-center
                     text-white
-                    text-xl
                     transition-all
                     duration-500
                     hover:scale-110
@@ -85,7 +91,9 @@ const ProjectCard = ({ project }) => {
                         src={project.logo}
                         alt={project.title[language]}
                         className="
-                            w-40
+                            w-28
+                            sm:w-36
+                            lg:w-40
                             object-contain
                             transition
                             duration-500
@@ -150,7 +158,8 @@ const ProjectCard = ({ project }) => {
 
                         <h3
                             className="
-                                text-3xl
+                                text-2xl
+                                sm:text-3xl
                                 font-bold
                                 text-white
                                 mb-4
@@ -161,10 +170,12 @@ const ProjectCard = ({ project }) => {
 
                         <p
                             className="
-                                text-gray-300
-                                text-sm
-                                max-w-md
-                                mb-6
+                            text-gray-300
+                            text-sm
+                            leading-relaxed
+                            max-w-md
+                            mb-6
+                            px-2
                             "
                         >
                             {project.description[language]}
@@ -177,6 +188,7 @@ const ProjectCard = ({ project }) => {
                                 justify-center
                                 gap-4
                                 mb-8
+                                text-2xl sm:text-3xl
                             "
                         >
                             {project.technologies.map((tech) => {
@@ -195,7 +207,14 @@ const ProjectCard = ({ project }) => {
                             })}
                         </div>
 
-                        <div className="flex gap-8">
+                        <div
+                            className="
+                                flex
+                                flex-wrap
+                                justify-center
+                                gap-5
+                            "
+                        >
 
                             {project.demo && (
                                 <a
@@ -208,7 +227,7 @@ const ProjectCard = ({ project }) => {
                                         transition
                                     "
                                 >
-                                    Demo →
+                                    {t("projects.demo →")}
                                 </a>
                             )}
 
@@ -223,7 +242,7 @@ const ProjectCard = ({ project }) => {
                                         transition
                                     "
                                 >
-                                    GitHub →
+                                    {t("projects.github →")}
                                 </a>
                             )}
 
@@ -240,3 +259,4 @@ const ProjectCard = ({ project }) => {
 };
 
 export default ProjectCard;
+

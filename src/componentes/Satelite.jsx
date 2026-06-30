@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 import TechLabel from "../componentes/TechLabel";
 import { DoubleSide } from "three";
 import SateliteMenu from "../componentes/SateliteMenu";
@@ -11,7 +13,10 @@ export default function Satellite({
 
 }) {
 
+  const { t } = useContext(LanguageContext);
+
     return (
+      
 
 
         <group
@@ -184,7 +189,7 @@ export default function Satellite({
               </mesh>
 
               <TechLabel position={[0, -0.5, 0]}>
-                CONTACTO
+                {t("common.contact")}
             </TechLabel>
 
             <SateliteMenu

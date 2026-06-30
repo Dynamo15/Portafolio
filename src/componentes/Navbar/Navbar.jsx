@@ -7,7 +7,7 @@ const Navbar = () => {
 
   if (!context) return null;
 
-  const { language, setLanguage } = context;
+  const { language, changeLanguage } = context;
 
   return (
     <nav className="navbar">
@@ -23,7 +23,7 @@ const Navbar = () => {
       <button
         className={`language-btn ${language === "en" ? "reverse" : ""}`}
         onClick={() =>
-          setLanguage(language === "es" ? "en" : "es")
+          changeLanguage(language === "es" ? "en" : "es")
         }
       >
         <span className="orbit-ring">

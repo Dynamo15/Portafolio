@@ -1,4 +1,4 @@
-import { techIcons } from "../data/techIcons";
+import { techIcons } from "../data/api/techIcons";
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 
@@ -12,15 +12,19 @@ const ProjectModal = ({ project, onClose }) => {
 
         <div
             className="
-                fixed
-                inset-0
-                z-50
-                bg-black/80
-                backdrop-blur-md
-                flex
-                items-center
-                justify-center
-                p-6
+                w-full
+                max-w-5xl
+
+                max-h-[90vh]
+                overflow-y-auto
+
+                rounded-3xl
+                overflow-x-hidden
+
+                bg-zinc-950
+                border
+                border-white/10
+                shadow-2xl
             "
             onClick={onClose}
         >
@@ -28,8 +32,11 @@ const ProjectModal = ({ project, onClose }) => {
             <div
                 onClick={(e) => e.stopPropagation()}
                 className="
+                    relative
                     w-full
                     max-w-5xl
+                    max-h-[90vh]
+                    overflow-y-auto
                     rounded-3xl
                     overflow-hidden
                     bg-zinc-950
@@ -38,6 +45,38 @@ const ProjectModal = ({ project, onClose }) => {
                     shadow-2xl
                 "
             >
+
+
+                <button
+                    onClick={onClose}
+                    className="
+                        absolute
+                        top-4
+                        right-4
+                        z-50
+
+                        w-10
+                        h-10
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        bg-black/60
+                        backdrop-blur-md
+
+                        text-white
+                        text-xl
+
+                        transition
+                        hover:bg-orange-500
+                        hover:scale-110
+                    "
+                >
+                    ✕
+                </button>
 
                 {/* IMAGE */}
 
@@ -49,7 +88,9 @@ const ProjectModal = ({ project, onClose }) => {
 
                     className="
                         w-full
-                        h-[420px]
+                        h-[180px]
+                        sm:h-[280px]
+                        md:h-[420px]
                         object-cover
                     "
 
@@ -57,9 +98,13 @@ const ProjectModal = ({ project, onClose }) => {
 
                 {/* CONTENT */}
 
-                <div className="p-10">
+                <div className="p-5
+                    sm:p-8
+                    lg:p-10">
 
-                    <h2 className="text-4xl font-black text-white mb-6">
+                    <h2 className="text-2xl
+                        sm:text-3xl
+                        lg:text-4xl font-black text-white mb-6">
 
                         {project.title[language]}
 
@@ -84,8 +129,10 @@ const ProjectModal = ({ project, onClose }) => {
                                         flex
                                         items-center
                                         gap-2
-                                        px-4
-                                        py-2
+                                        px-3
+                                        py-1.5
+                                        text-sm
+                                        sm:text-base
                                         rounded-full
                                         bg-orange-500/10
                                         border
@@ -96,7 +143,8 @@ const ProjectModal = ({ project, onClose }) => {
 
                                     {Icon && (
 
-                                        <Icon className={`text-lg ${color}`} />
+                                        <Icon className={`text-base
+                                                            sm:text-lg ${color}`} />
 
                                     )}
 
@@ -112,7 +160,11 @@ const ProjectModal = ({ project, onClose }) => {
 
                     {/* DESCRIPTION */}
 
-                    <p className="text-gray-400 leading-8 text-lg mb-10">
+                    <p className="text-gray-400 text-base
+                        sm:text-lg
+
+                        leading-7
+                        sm:leading-8 mb-10">
 
                         {project.description[language]}
 
@@ -120,7 +172,15 @@ const ProjectModal = ({ project, onClose }) => {
 
                     {/* BUTTONS */}
 
-                    <div className="flex gap-4">
+                    <div
+                        className="
+                            flex
+                            flex-col
+                            sm:flex-row
+
+                            gap-4
+                        "
+                    >
 
                         {project.demo && (
 

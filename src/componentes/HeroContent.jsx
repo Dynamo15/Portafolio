@@ -1,9 +1,11 @@
-
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 import { useEffect, useState } from "react";
 
 export default function HeroContent({ progress = 0 }) {
   const words = "Software Developer";
   const [text, setText] = useState("");
+  const { t } = useContext(LanguageContext);
 
   useEffect(() => {
     let i = 0;
@@ -51,8 +53,10 @@ export default function HeroContent({ progress = 0 }) {
             mb-5
           "
         >
-          HOLA MUNDO_
+          {t("hero.hello")}
+          
         </p>
+        
 
         {/* NAME */}
         <h1
@@ -109,7 +113,7 @@ export default function HeroContent({ progress = 0 }) {
             leading-relaxed
           "
         >
-          La fuerza más fuerte que la electricidad y la energía atómica es la voluntad
+          {t("hero.description")}
         </p>
 
         {/* BUTTONS */}
@@ -133,7 +137,7 @@ export default function HeroContent({ progress = 0 }) {
               shadow-lg
             "
           >
-            Ver Proyectos
+            {t("hero.projectsButton")}
           </a>
           {/*
             <a

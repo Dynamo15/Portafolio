@@ -48,7 +48,7 @@ const About = () => {
               mb-4
             "
           >
-            Sobre Mi
+            {t("about.title")}
           </p>
 
           <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
@@ -72,10 +72,7 @@ const About = () => {
               max-w-2xl
             "
           >
-            Soy ingeniero en software y disfruto entender cómo funcionan los
-            sistemas para construir soluciones útiles. Me motiva aprender nuevas
-            tecnologías, convertir ideas en proyectos reales y enfrentar retos que
-            me permitan seguir creciendo profesionalmente.
+            {t("about.description")}
           </p>
 
           <div
@@ -93,28 +90,28 @@ const About = () => {
           >
             <div>
               <h3 className="text-xl lg:text-2xl font-bold text-orange-400">
-                REMOTO
+                {t("about.remote")}
               </h3>
               <p className="text-gray-500 text-lg lg:text-xl">
-                SI
+                {t("about.yes")}
               </p>
             </div>
 
             <div>
               <h3 className="text-xl lg:text-2xl font-bold text-orange-400">
-                ESTATUS
+                {t("about.status")}
               </h3>
               <p className="text-gray-500 text-lg lg:text-xl">
-                DISPONIBLE PARA TRABAJAR
+                {t("about.available")}
               </p>
             </div>
 
             <div>
               <h3 className="text-xl lg:text-2xl font-bold text-orange-400">
-                LOCACIÓN
+                {t("about.location")}
               </h3>
               <p className="text-gray-500 text-lg lg:text-xl">
-                MÉXICO
+                {t("about.country")}
               </p>
             </div>
           </div>

@@ -245,11 +245,11 @@ export default function Earth() {
     
     <div
       className="
-        w-[260px]
-        h-[260px]
+        w-[360px]
+        h-[360px]
 
-        sm:w-[350px]
-        sm:h-[350px]
+        sm:w-[550px]
+        sm:h-[550px]
 
         md:w-[600px]
         md:h-[600px]
@@ -257,8 +257,8 @@ export default function Earth() {
         lg:w-[800px]
         lg:h-[800px]
 
-        xl:w-[1800px]
-        xl:h-[1800px]
+        xl:w-[1850px]
+        xl:h-[1850px]
       "
     >
       <Canvas camera={{ position: [0, 0, 10] }}>

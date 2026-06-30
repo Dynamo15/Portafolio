@@ -1,14 +1,57 @@
 {
-  "nav": {
-    "hero": "Home",
-    "about": "About me",
-    "projects": "Projects",
-    "skills": "Skills"
+  "common": {
+    "github": "GitHub",
+    "demo": "Demo",
+    "viewMore": "View More",
+    "close": "Close",
+    "download": "Download",
+    "contact": "Contact",
+    "send": "Send",
+    "loading": "Loading...",
+    "available": "Available"
+    
   },
-  "hero": {
-    "title": "Hi, I'm Ricardo",
-    "subtitle": "Web Developer",
-    "cta": "View Projects"
-  }
-}
 
+  "navbar": {
+    "language": "Language"
+  },
+
+  "hero": {
+    "hello": "HELLO WORLD_",
+    "role": "Software Developer",
+    "description": "The strongest force beyond electricity and atomic energy is determination.",
+    "projectsButton": "View Projects"
+  },
+
+  "about": {
+    "title": "About Me",
+    "description": "I am a software engineer who enjoys understanding how systems work to build useful solutions. I am motivated by learning new technologies, turning ideas into real projects, and taking on challenges that help me grow professionally.",
+    "remote": "REMOTE",
+    "status": "STATUS",
+    "location": "LOCATION",
+    "available": "AVAILABLE FOR WORK",
+    "yes": "YES",
+    "country": "MÉXICO"
+  },
+
+  "projects": {
+    "subtitle": "Projects",
+    "title": "Featured Projects",
+    "demo": "Demo",
+    "github": "GitHub",
+    "liveDemo": "Live Demo"
+  },
+
+  "skills": {
+    "subtitle": "Skills",
+    "title": "Technologies Used in Projects"
+  },
+
+  "contact": {
+    "subtitle": "Contact",
+    "title": "Remote work",
+    "mail": "MAIL"
+  }
+
+  
+}

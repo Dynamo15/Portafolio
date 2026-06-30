@@ -1,4 +1,4 @@
-import { techIcons } from "../data/techIcons";
+import { techIcons } from "../data/api/techIcons";
 
 
 const SkillCard = ({ skill }) => {
@@ -16,12 +16,15 @@ const SkillCard = ({ skill }) => {
                 bg-white/5
                 backdrop-blur-md
                 rounded-3xl
-                p-8
+                p-5
+                sm:p-6
+                lg:p-8
                 flex
                 flex-col
                 items-center
                 justify-center
-                gap-4
+                gap-3
+                sm:gap-4
                 transition-all
                 duration-300
 
@@ -35,7 +38,9 @@ const SkillCard = ({ skill }) => {
 
                 <TechIcon
                     className={`
-                        text-5xl
+                        text-3xl
+                        sm:text-4xl
+                        lg:text-5xl
                         transition-all
                         duration-300
                         group-hover:scale-110
@@ -48,7 +53,9 @@ const SkillCard = ({ skill }) => {
             <span
                 className="
                     text-white
-                    text-xl
+                    text-sm
+                    sm:text-lg
+                    lg:text-xl
                     font-semibold
                     group-hover:text-orange-300
                     transition

@@ -1,14 +1,18 @@
-import { skills } from "../data/skills";
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+import { skills } from "../data/api/skills";
 import SkillCard from "../componentes/SkillCard";
 
 const Skills = () => {
+  const { t } = useContext(LanguageContext);
   
   return (
     <section
       id="skills"
       className="
         px-6
-        pt-32
+        pt-20
+        md:pt-32
         relative
         z-20
       "
@@ -16,29 +20,34 @@ const Skills = () => {
         <div className="max-w-7xl mx-auto">
 
         {/* TITLE */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12
+          md:mb-20">
 
           <p
             className="
               text-orange-400
               tracking-[0.35em]
-              text-2xl
+              text-xl
+              sm:text-2xl
               uppercase
               mb-4
             "
           >
-            Habilidades
+            {t("skills.subtitle")}
           </p>
 
           <h2
             className="
               text-5xl
+              sm:text-4xl
+              md:text-5xl
+              lg:text-6xl
               md:text-6xl
               font-black
               text-white
             "
           >
-            Tecnologias usadas en Proyectos
+            {t("skills.title")}
           </h2>
 
         </div>
@@ -50,7 +59,10 @@ const Skills = () => {
             grid-cols-2
             md:grid-cols-3
             lg:grid-cols-4
-            gap-8
+
+            gap-4
+            sm:gap-6
+            lg:gap-8
           "
         >
 

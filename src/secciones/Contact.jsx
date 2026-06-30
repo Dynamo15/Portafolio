@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
 
 
 const Contact = () => {
+  const { t } = useContext(LanguageContext);
   
 
   return (
@@ -31,7 +34,7 @@ const Contact = () => {
               mb-4
             "
           >
-            Contacto
+            {t("contact.subtitle")}
           </p>
 
           <h2
@@ -43,7 +46,7 @@ const Contact = () => {
               mb-6
             "
           >
-            Disponible!
+            {t("contact.title")}
           </h2>
 
           
@@ -85,7 +88,7 @@ const Contact = () => {
             {/* EMAIL */}
             <div className="mb-10 text-center">
               <p className="text-orange-400 uppercase tracking-[0.3em] mb-2">
-                Correo
+                {t("contact.mail")}
               </p>
 
               <a
