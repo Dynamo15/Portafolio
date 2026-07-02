@@ -2,27 +2,27 @@ export const skills = [
 
     {
         id: 1,
-        icon: "React"
+        name: "React"
     },
 
     {
         id: 2,
-        icon: "Tailwind"
+        name: "Tailwind"
     },
 
     {
         id: 3,
-        icon: "Three.js"
+        name: "Three.js"
     },
 
     {
         id: 4,
-        icon: "JavaScript"
+        name: "JavaScript"
     },
 
     {
         id: 5,
-        icon: "PHP"
+        name: "PHP"
     }
 
 ];

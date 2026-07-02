@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import { techIcons } from "../data/api/techIcons";
+import { techIcons } from "../utils/techIcons";
 import "../styles/ProjectCard.css";
 
 const ProjectCard = ({ project }) => {

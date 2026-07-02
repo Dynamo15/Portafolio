@@ -1,16 +1,16 @@
 import useFetch from "./useFetch";
-import { getSkills } from "../services/skillsService";
+import { getProfile } from "../services/profileServices";
 
-export default function useSkills() {
+export default function useProfile() {
 
     const {
         data,
         loading,
         error,
-    } = useFetch(getSkills);
+    } = useFetch(getProfile);
 
     return {
-        skills: data ?? [],
+        profile: data,
         loading,
         error,
     };

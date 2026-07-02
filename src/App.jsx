@@ -1,9 +1,9 @@
 import Layout from "./layout/Layout";
-import Hero from "./secciones/Hero";
-import About from "./secciones/About";
-import Skills from "./secciones/Skills";
-import Projects from "./secciones/Projects";
-import Contact from "./secciones/Contact";
+import Hero from "./sections/Hero";
+import About from "./sections/About";
+import Skills from "./sections/Skills";
+import Projects from "./sections/Projects";
+import Contact from "./sections/Contact";
 
 function App() {
   return (

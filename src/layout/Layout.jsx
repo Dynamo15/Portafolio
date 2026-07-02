@@ -1,9 +1,9 @@
-import Navbar from "../componentes/Navbar/Navbar";
-import SceneBlack from "../componentes/SceneBlack";
+import Navbar from "../components/Navbar/Navbar";
+import SceneBlack from "../components/SceneBlack";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useEffect, useState } from "react";
-import ScrollToTopButton from "../componentes/ScrollToTopButton";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 const Layout = ({ children }) => {
     const [scroll, setScroll] = useState(0);
@@ -120,6 +120,7 @@ const Layout = ({ children }) => {
         >
           <FaLinkedin className="hover:scale-125 transition duration-300" />
         </a>
+
 
         <a
           href="mailto:ricardosah19@gmail.com"

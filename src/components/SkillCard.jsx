@@ -1,4 +1,4 @@
-import { techIcons } from "../data/api/techIcons";
+import { techIcons } from "../utils/techIcons";
 
 
 const SkillCard = ({ skill }) => {

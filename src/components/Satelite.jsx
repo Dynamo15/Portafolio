@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import TechLabel from "../componentes/TechLabel";
+import TechLabel from "../components/TechLabel";
 import { DoubleSide } from "three";
-import SateliteMenu from "../componentes/SateliteMenu";
+import SateliteMenu from "../components/SateliteMenu";
 
 
 export default function Satellite({

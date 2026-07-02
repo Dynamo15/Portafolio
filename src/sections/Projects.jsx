@@ -1,15 +1,38 @@
+import useProjects from "../hooks/useProjects";
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import { useState } from "react";
-import { projects } from "../data/api/projects";
-import ProjectCard from "../componentes/ProjectCard";
-import ProjectModal from "../componentes/ProjectModal";
+import { projects } from "../data/mock/projects";
+import ProjectCard from "../components/ProjectCard";
+import ProjectModal from "../components/ProjectModal";
 
 const Projects = () => {
 
   const [selectedProject, setSelectedProject] = useState(null);
   const [openCard, setOpenCard] = useState(null);
   const { t } = useContext(LanguageContext);
+  const { projects, loading, error } = useProjects();
+
+  if (loading) {
+
+    return (
+      <section className="py-40 text-center text-white">
+        Cargando proyectos...
+      </section>
+    );
+
+  }
+
+  if (error) {
+
+    return (
+      <section className="py-40 text-center text-red-500">
+        Error al cargar proyectos.
+      </section>
+    );
+
+  }
+
 
 
   return (

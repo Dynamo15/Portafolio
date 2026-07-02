@@ -1,10 +1,22 @@
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
+import useContact from "../hooks/useContact";
 
 
 const Contact = () => {
   const { t } = useContext(LanguageContext);
-  
+  const {
+    contact,
+    loading,
+    error,
+  } = useContact();
+    
+
+  if (loading) return null;
+
+  if (error) {
+    return <p>Error cargando contacto.</p>;
+  }
 
   return (
     <section
@@ -92,7 +104,7 @@ const Contact = () => {
               </p>
 
               <a
-                href="mailto:ricardosah19@gmail.com"
+                href={`mailto:${contact.email}`}
                 className="
                   block
                   text-2xl
@@ -104,7 +116,7 @@ const Contact = () => {
                   text-center
                 "
               >
-                ricardosah19@gmail.com
+                {contact.email}
               </a>
 
               

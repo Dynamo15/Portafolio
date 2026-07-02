@@ -1,4 +1,4 @@
-import { techIcons } from "../data/api/techIcons";
+import { techIcons } from "../utils/techIcons";
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 
@@ -203,8 +203,7 @@ const ProjectModal = ({ project, onClose }) => {
                                 "
 
                             >
-
-                                Live Demo
+                                {t("common.dem")}
 
                             </a>
 
@@ -233,7 +232,7 @@ const ProjectModal = ({ project, onClose }) => {
 
                             >
 
-                                GitHub
+                                {t("common.github")}
 
                             </a>
 

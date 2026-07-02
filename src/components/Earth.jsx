@@ -3,8 +3,8 @@ import { useRef, useEffect, useState} from "react";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import {Text} from "@react-three/drei";
-import TechLabel from "../componentes/TechLabel";
-import Satelite from "../componentes/Satelite";
+import TechLabel from "../components/TechLabel";
+import Satelite from "../components/Satelite";
 
 
 function Planet() {

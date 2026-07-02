@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import HeroContent from "../componentes/HeroContent";
+import HeroContent from "../components/HeroContent";
 
 const Hero = () => {
   const [scroll, setScroll] = useState(0);

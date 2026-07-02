@@ -1,9 +1,22 @@
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import Earth from "../componentes/Earth";
+import Earth from "../components/Earth";
+import useProfile from "../hooks/useProfile";
 
 const About = () => {
-  const { t } = useContext(LanguageContext);
+  //const { t } = useContext(LanguageContext);
+  const { t, language } = useContext(LanguageContext);
+  const {
+    profile,
+    loading,
+    error,
+  } = useProfile();
+
+  if (loading) return null;
+
+  if (error) {
+    return <p>Error cargando el perfil.</p>;
+  }
 
   return (
     <section
@@ -51,9 +64,11 @@ const About = () => {
             {t("about.title")}
           </p>
 
+          {/*
           <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
-            {t("")}
+            {t("about.heading")}
           </h2>
+          */}
 
           <p
             className="
@@ -72,7 +87,7 @@ const About = () => {
               max-w-2xl
             "
           >
-            {t("about.description")}
+            {profile.about.description[language]}
           </p>
 
           <div
@@ -93,7 +108,7 @@ const About = () => {
                 {t("about.remote")}
               </h3>
               <p className="text-gray-500 text-lg lg:text-xl">
-                {t("about.yes")}
+                  {profile.about.remote.label[language]}
               </p>
             </div>
 
@@ -102,7 +117,7 @@ const About = () => {
                 {t("about.status")}
               </h3>
               <p className="text-gray-500 text-lg lg:text-xl">
-                {t("about.available")}
+                {profile.about.status[language]}
               </p>
             </div>
 
@@ -111,7 +126,7 @@ const About = () => {
                 {t("about.location")}
               </h3>
               <p className="text-gray-500 text-lg lg:text-xl">
-                {t("about.country")}
+                {profile.about.location[language]}
               </p>
             </div>
           </div>

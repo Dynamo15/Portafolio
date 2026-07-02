@@ -1,24 +1,43 @@
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import { useEffect, useState } from "react";
+import useProfile from "../hooks/useProfile";
 
 export default function HeroContent({ progress = 0 }) {
-  const words = "Software Developer";
   const [text, setText] = useState("");
-  const { t } = useContext(LanguageContext);
+  const { language, t } = useContext(LanguageContext);
+  const {
+      profile,
+      loading,
+      error
+  } = useProfile();
+  const words = profile?.hero?.role?.[language] ?? "";
 
   useEffect(() => {
-    let i = 0;
 
-    const interval = setInterval(() => {
-      setText(words.slice(0, i));
-      i++;
+      let i = 0;
 
-      if (i > words.length) clearInterval(interval);
-    }, 90);
+      setText("");
 
-    return () => clearInterval(interval);
-  }, []);
+      const interval = setInterval(() => {
+
+          setText(words.slice(0, i));
+
+          i++;
+
+          if (i > words.length)
+              clearInterval(interval);
+
+      }, 90);
+
+      return () => clearInterval(interval);
+
+  }, [words]);
+
+
+  if (loading) return null;
+
+  if (error) return null;
 
   return (
     <section
@@ -72,7 +91,7 @@ export default function HeroContent({ progress = 0 }) {
             md:whitespace-nowrap
           "
         >
-          Ricardo Sánchez Herrera
+          {profile.hero.name}
         </h1>
 
         {/* TYPEWRITER */}
@@ -113,7 +132,7 @@ export default function HeroContent({ progress = 0 }) {
             leading-relaxed
           "
         >
-          {t("hero.description")}
+          {profile.hero.description[language]}
         </p>
 
         {/* BUTTONS */}
@@ -126,33 +145,36 @@ export default function HeroContent({ progress = 0 }) {
             flex-wrap
           "
         >
-          <a
-            href="#projects"
-            className="
-              px-7 py-3 rounded-full
-              bg-orange-500
-              hover:bg-orange-400
-              transition
-              font-semibold
-              shadow-lg
-            "
-          >
-            {t("hero.projectsButton")}
-          </a>
-          {/*
-            <a
-              href="#contact"
-              className="
-                px-7 py-3 rounded-full
-                border border-white/20
-                hover:border-orange-400
-                hover:text-orange-400
-                transition
-              "
-            >
-              Contacto
-            </a>
-          */}
+
+          {profile.hero.buttons
+            .filter(button => button.enabled)
+            .map(button => (
+
+              <a
+                key={button.id}
+                href={button.href}
+                target={button.target}
+                rel={
+                  button.target === "_blank"
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className="
+                  px-7
+                  py-3
+                  rounded-full
+                  bg-orange-500
+                  hover:bg-orange-400
+                  transition
+                  font-semibold
+                  shadow-lg
+                "
+              >
+                {button.label[language]}
+              </a>
+
+          ))}
+
         </div>
       </div>
     </section>

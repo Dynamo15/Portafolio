@@ -1,10 +1,21 @@
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import { skills } from "../data/api/skills";
-import SkillCard from "../componentes/SkillCard";
+import useSkills from "../hooks/useSkills";
+import SkillCard from "../components/SkillCard";
 
 const Skills = () => {
   const { t } = useContext(LanguageContext);
+  const {
+      skills,
+      loading,
+      error,
+  } = useSkills();
+
+  if (loading) return null;
+
+  if (error) {
+      return <p>Error cargando habilidades.</p>;
+  }
   
   return (
     <section
